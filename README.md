@@ -12,7 +12,11 @@ where the objective is to predict house prices from a train and a test datasets.
 Content :
 
 Load data
+
 Data preparation
+
 Exploratory data analysis
+
 Modeling
+
 Conclusion
