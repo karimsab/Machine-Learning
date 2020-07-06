@@ -30,5 +30,18 @@ test = pd.read_csv('.../test.csv')
 In this part, there are successive tasks, to, at the end, obtain a clean dataset, which will be more easily usable to explore and modeling it.
 
 2.1 Remove outliers 
+![outliers](https://user-images.githubusercontent.com/62601686/86583356-67b8b280-bf83-11ea-9173-0c5a1f39092c.png)
 
-![](https://upload.wikimedia.org/wikipedia/commons/3/35/Doyens_humanit%C3%A9.png)
+Often, in a dataset, we have outliers : values that are far from the main values observed.
+We can at first, plot the values and see which one is an outlier, then to remove them and have a more "contain" dataset.
+
+```
+data = data[data['GrLivArea'] < 4000]
+data = data[data['LotFrontage'] < 300]
+data = data[data['LotArea'] < 100000]
+data.reset_index(drop=True, inplace=True)
+```
+
+2.2 Handling missing values
+
+Of course, we will 
