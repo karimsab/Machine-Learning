@@ -24,3 +24,11 @@ First of all, we load the datasets (after importing the useful modules):
 train = pd.read_csv('.../train.csv')
 test = pd.read_csv('.../test.csv')
 ```
+
+2. Data preparation
+
+In this part, there are successive tasks, to, at the end, obtain a clean dataset, which will be more easily usable to explore and modeling it.
+
+2.1 Remove outliers 
+
+![](https://fr.wikipedia.org/wiki/Donn%C3%A9e_aberrante#/media/Fichier:Doyens_humanit%C3%A9.png)
