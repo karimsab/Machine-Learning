@@ -11,11 +11,12 @@ where the objective is to predict house prices from a train and a test datasets.
 
 Content :
 
-\begin{enumerate}
-\item Load data
-\item Data preparation
-\item Exploratory data analysis
-\item Modeling
-\item Conclusion
-\end{enumerate}
+Load data
 
+Data preparation
+
+Exploratory data analysis
+
+Modeling
+
+Conclusion
