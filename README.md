@@ -31,4 +31,4 @@ In this part, there are successive tasks, to, at the end, obtain a clean dataset
 
 2.1 Remove outliers 
 
-![](https://fr.wikipedia.org/wiki/Donn%C3%A9e_aberrante#/media/Fichier:Doyens_humanit%C3%A9.png)
+![](https://upload.wikimedia.org/wikipedia/commons/3/35/Doyens_humanit%C3%A9.png)
