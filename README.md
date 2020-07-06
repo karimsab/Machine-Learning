@@ -9,14 +9,10 @@ https://www.kaggle.com/c/home-data-for-ml-course
 
 where the objective is to predict house prices from a train and a test datasets. 
 
-Content :
+**Content :**
 
-Load data
-
-Data preparation
-
-Exploratory data analysis
-
-Modeling
-
-Conclusion
+* Load data
+* Data preparation
+* Exploratory data analysis
+* Modeling
+* Conclusion
