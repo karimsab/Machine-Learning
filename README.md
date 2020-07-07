@@ -37,8 +37,8 @@ We split the train set :
 ```
 numerical_cols = [col for col in train.columns if train[col].dtype in ['int64','float64']]
 categorical_cols = [col for col in train.columns if train[col].dtype == 'object']
-numerical_train = train[numerical_cols].copy()
-categorical_train = train[categorical_cols].copy()
+numerical_train_data = train[numerical_cols].copy()
+categorical_train_data = train[categorical_cols].copy()
 ```
 Now we are able to plot the numericals data (scatter plot for example) and see what we can do with it. In the same way, we can plot all the categoricals data (using another type of plot) and explore it.
 
@@ -60,7 +60,7 @@ train.reset_index(drop=True, inplace=True)
 
 3.2. Handling missing values
 
-Of course, we will have missing values that we have to deal with. One can see the missing values by using `pd.DataFrame.isnull()`method.
+Of course, we will have missing values that we have to deal with. One can see the missing values by using `pd.DataFrame.isnull()` method.
 
 Then, there are many possibilities to deal with the missing values. We can simply remove them, but we also remove informations from the dataset. The other way, is to impute missing values with another ones. We will use this method.
 
@@ -68,6 +68,18 @@ The Pandas packages allow us to fill the **NaN** values with a desired one, here
 
 `train['LotFrontage'] = train['LotFrontage'].fillna(train['LotFrontage'].mode()[0])`
 
-3.3 Handling categorical data
+3.3. Categorical data
 
-In this part, 
+For the categorical data, the process is to encode them to have numerical values instead. For example, again we take the different colors of a bathroom, we create a column for each categorical variable and we impute the presence (1) or not (0) or the variable :
+
+![Capture d’écran 2020-07-07 à 12 20 24](https://user-images.githubusercontent.com/62601686/86767561-71f2b380-c04c-11ea-97ba-563713cbb2d1.png)
+
+It's more convenient to considere categorical variables with a limited number of unique variable.
+
+For that we use the module *One Hot Encoder* :
+```
+encoder = OneHotEncoder(handle_unknown='ignore', sparse=False)
+categorical_encoded_train_data = pd.DataFrame(encoder.fit_transform(xcat))
+categorical_encoded_train_data.index = categorical_train_data.index
+```
+4. EDA
