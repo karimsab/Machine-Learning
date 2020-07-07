@@ -83,3 +83,20 @@ categorical_encoded_train_data = pd.DataFrame(encoder.fit_transform(xcat))
 categorical_encoded_train_data.index = categorical_train_data.index
 ```
 4. EDA
+
+With the help of Seaborn and Pandas we can use some strong tools to analyse data in many ways. Here we'll show how to use a correlation matrix.
+
+We can create a correlation matrix in Pandas, using different methods whether the correlations are linear or polynomial. For this example, we use the **Pearson** method, and apply it to the first ten numerical columns :
+
+```
+first_ten_cols = numerical_train_data[:10]
+corrmat = train[first_ten_cols].corr(method='pearson')
+f, ax = plt.subplots(figsize=(11, 7))
+sns.heatmap(corrmat, cbar=True, cmap='Greens', annot=True, square=True, fmt='.2f', annot_kws={'size': 10})
+```
+
+and one can see the results below :
+
+![Capture d’écran 2020-07-07 à 18 08 28](https://user-images.githubusercontent.com/62601686/86811537-4ee0f780-c07e-11ea-8645-7a6d971331aa.png)
+
+Strong correlation, i.e. close to **1.** indicate a linear correlation between variables. Whether it is negative or positive. Two variables with strong correlation may produce redundancy and overfitting may occur.
