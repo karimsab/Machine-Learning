@@ -27,9 +27,9 @@ First of all, we load the datasets (after importing the useful modules):
 train = pd.read_csv('.../train.csv')
 test = pd.read_csv('.../test.csv')
 ```
-2. Data vizualisation
+2. Data visualization
 
-Here, we can use the Seaborn package to do some data vizualisations of our dataset and spot some useful informations.
+We can use the Seaborn package to do some data visualizations of our dataset and spot some useful informations.
 
 For that, we first split the data in a numerical and a categorical set. For your information, numericals data are data that are only numerical (obviously). For example, the number of bedrooms (1, 2, 3...). And categoricals data are the other ones, for example, the color of bedrooms (blue, green, white...).
 
@@ -41,6 +41,27 @@ numerical_train_data = train[numerical_cols].copy()
 categorical_train_data = train[categorical_cols].copy()
 ```
 Now we are able to plot the numericals data (scatter plot for example) and see what we can do with it. In the same way, we can plot all the categoricals data (using another type of plot) and explore it.
+
+Below, different plots to show a percentage of the power of seaborn :
+
+```
+plt.figure(figsize=(10,5))
+plt.subplot(121)
+sns.boxplot("MasVnrType","SalePrice",data=data)
+plt.subplot(122)
+sns.boxplot("Electrical","SalePrice",data=data)
+plt.ylabel("SalePrice")
+plt.xlabel("Electrical")
+```
+
+![Capture d’écran 2020-07-08 à 13 23 38](https://user-images.githubusercontent.com/62601686/86925005-8c9e5880-c130-11ea-9e54-29ea210be839.png)
+
+One can see boxplots of categorical variable such as type of electrical installation and masonry type vs house price.
+
+Other examples of plots :
+
+![Capture d’écran 2020-07-08 à 14 02 21](https://user-images.githubusercontent.com/62601686/86925295-f9195780-c130-11ea-827b-df2b8b8c6569.png)
+
 
 3. Data preparation
 
