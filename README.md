@@ -53,8 +53,6 @@ We can at first, plot the values and see which one is an outlier, then to remove
 
 ```
 train = train[train['GrLivArea'] < 4000]
-train = train[train['LotFrontage'] < 300]
-train = train[train['LotArea'] < 100000]
 train.reset_index(drop=True, inplace=True)
 ```
 
@@ -128,6 +126,7 @@ preds_test = model.predict(test)
 print(preds_test.head())
 ```
 ![Capture d’écran 2020-07-08 à 12 23 49](https://user-images.githubusercontent.com/62601686/86907841-f3624880-c115-11ea-9aa8-3be9f53f5db7.png)
+
 And *voilà*.
 
 6. Conclusion
