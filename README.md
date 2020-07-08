@@ -127,6 +127,7 @@ If we agree with the value of the MAE, we can now use our model to predict house
 preds_test = model.predict(test)
 print(preds_test.head())
 ```
+![Capture d’écran 2020-07-08 à 12 23 49](https://user-images.githubusercontent.com/62601686/86907841-f3624880-c115-11ea-9aa8-3be9f53f5db7.png)
 And *voilà*.
 
 6. Conclusion
