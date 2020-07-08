@@ -67,6 +67,15 @@ One can see boxplots of categorical variable such as type of electrical installa
 
 Other examples of plots :
 
+```
+plt.subplot(121)
+sns.scatterplot('GrLivArea', 'SalePrice', data=data, hue='GarageCars')
+plt.title("Sale Price vs Lot Size")
+plt.subplot(122)
+sns.barplot(data["TotRmsAbvGrd"], data["SalePrice"],palette="plasma_r")
+plt.title("Sale Price vs Number of rooms")
+```
+
 ![Capture d’écran 2020-07-08 à 14 02 21](https://user-images.githubusercontent.com/62601686/86925295-f9195780-c130-11ea-827b-df2b8b8c6569.png)
 
 
