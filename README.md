@@ -1,7 +1,7 @@
 # Machine-Learning
 *Machine Learning basic application*
 
-This is an overview and a basic example of what we are capable of in data science machine learning.
+This is a synthetic and a basic example of what we are capable of in data science machine learning.
 
 For this, we are using the [House Prices Competition](https://www.kaggle.com/c/home-data-for-ml-course) on Kaggle site,
 
@@ -18,6 +18,13 @@ where the objective is to predict house prices from a train and test datasets.
 
 ---
 **Introduction**
+
+We have at our disposal a train set with more than 80 variables that describes around 1400 houses in Iowa. One of the columns give us the sale price of these houses. This is the target we will trying to predict with machine learning algorithms and data preprocessing. The test set, is structured-like the train set, without the sale price column. So this is we want to predict.
+
+**Python** is a powerful and major langage in data science. Besides the fact that it is a simple langage to learn and also to read, there are plethora of packages to do what we want to do : graphic applications, machine learning, scientific programs , basic games, and much more...
+
+For this short overview, we use these indispensable packages : `pandas`, `numpy`, `seaborn`, `matplotlib`and `sklearn`, to perform the predictions of house prices.
+
 ---
 
 1. Load data
