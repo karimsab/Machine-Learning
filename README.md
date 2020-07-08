@@ -100,3 +100,35 @@ and one can see the results below :
 ![Capture d’écran 2020-07-07 à 18 08 28](https://user-images.githubusercontent.com/62601686/86811537-4ee0f780-c07e-11ea-8645-7a6d971331aa.png)
 
 Strong correlation, i.e. close to **1.00** indicate a linear correlation between variables. Whether it is negative or positive. Two variables with strong correlation can produce redundancy and overfitting may occur.
+
+5. Modeling
+
+After preprocessing the data with the cleaning step, the vizualisation of variables, the handling of missing values and some features engineering, the last step is to create a model based on the training data.
+We first split the training set in a training and validation set. 
+``` 
+xtrain, xvalid, ytrain, yvalid = train_test_split(data, y, train_size=0.8, test_size=0.2, random_state=0)
+``` 
+With that we create a model to fit the training data and apply it on the validation set. Then we compute the *mean absolute error* (or mean squared error or another) to see if our model is precisely fitting the data or not.
+One can also optimize the modeling step, to search which machine learning algorithm is the most accurate for the context. 
+
+For the example, we'll use the simple one that is the decision tree regressor. On can see below a simple illustration of how it works :
+
+![Capture d’écran 2020-07-08 à 12 03 52](https://user-images.githubusercontent.com/62601686/86906243-8f3e8500-c113-11ea-805c-0b0e25269196.png)
+
+For optimizing it, we can act on many parameters such as the numuber of nodes or leaves, the depth of the tree, and more... here we'll keep it simple.
+```
+model = DecisionTreeRegressor(random_state=0)
+model.fit(xtrain, ytrain)
+predictions = model.predict(xvalid)
+print('MAE', mean_absolute_error(predictions, yvalid))
+```
+If we agree with the value of the MAE, we can now use our model to predict house prices on the test set (wich have not a Sale Price column).
+```
+preds_test = model.predict(test)
+print(preds_test.head())
+```
+And *voilà*.
+
+6. Conclusion
+
+*work in progress*
