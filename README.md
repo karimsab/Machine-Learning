@@ -49,12 +49,13 @@ In this part, there are successive tasks, to, at the end, obtain a clean dataset
 3.1. Remove outliers 
 
 Often, in a dataset, we have outliers : values that are far from the main values observed.
-We can at first, plot the values and see which one is an outlier, then to remove them and have a more "contain" dataset.
+We can at first, plot the values and see which one is an outlier, then to remove them and have a more linear distribution.
 
 ```
 train = train[train['GrLivArea'] < 4000]
 train.reset_index(drop=True, inplace=True)
 ```
+![Capture d’écran 2020-07-08 à 12 41 09](https://user-images.githubusercontent.com/62601686/86909429-594fcf80-c118-11ea-903f-23540b792406.png)
 
 3.2. Handling missing values
 
