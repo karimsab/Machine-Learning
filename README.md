@@ -30,7 +30,7 @@ For this short overview, we use these indispensable packages : `pandas`, `numpy`
 1. Load data
 
 First of all, we load the datasets (after importing the useful modules):
-```
+```python
 train = pd.read_csv('.../train.csv')
 test = pd.read_csv('.../test.csv')
 ```
@@ -41,7 +41,7 @@ We can use the Seaborn package to do some data visualizations of our dataset and
 For that, we first split the data in a numerical and a categorical set. For your information, numericals data are data that are only numerical (obviously). For example, the number of bedrooms (1, 2, 3...). And categoricals data are the other ones, for example, the color of bedrooms (blue, green, white...).
 
 We split the train set :
-```
+```python
 numerical_cols = [col for col in train.columns if train[col].dtype in ['int64','float64']]
 categorical_cols = [col for col in train.columns if train[col].dtype == 'object']
 numerical_train_data = train[numerical_cols].copy()
@@ -51,12 +51,12 @@ Now we are able to plot the numericals data (scatter plot for example) and see w
 
 Below, different plots to show a percentage of the power of seaborn :
 
-```
+```python
 plt.figure(figsize=(10,5))
 plt.subplot(121)
-sns.boxplot("MasVnrType","SalePrice",data=data)
+sns.boxplot("MasVnrType","SalePrice",data=train)
 plt.subplot(122)
-sns.boxplot("Electrical","SalePrice",data=data)
+sns.boxplot("Electrical","SalePrice",data=train)
 plt.ylabel("SalePrice")
 plt.xlabel("Electrical")
 ```
@@ -67,12 +67,12 @@ One can see boxplots of categorical variable such as type of electrical installa
 
 Other examples of plots :
 
-```
+```python
 plt.subplot(121)
-sns.scatterplot('GrLivArea', 'SalePrice', data=data, hue='GarageCars')
+sns.scatterplot('GrLivArea', 'SalePrice', data=train, hue='GarageCars')
 plt.title("Sale Price vs Lot Size")
 plt.subplot(122)
-sns.barplot(data["TotRmsAbvGrd"], data["SalePrice"],palette="plasma_r")
+sns.barplot(train["TotRmsAbvGrd"], train["SalePrice"],palette="plasma_r")
 plt.title("Sale Price vs Number of rooms")
 ```
 
@@ -88,7 +88,7 @@ In this part, there are successive tasks, to, at the end, obtain a clean dataset
 Often, in a dataset, we have outliers : values that are far from the main values observed.
 We can at first, plot the values and see which one is an outlier, then to remove them and have a more linear distribution.
 
-```
+```python
 train = train[train['GrLivArea'] < 4000]
 train.reset_index(drop=True, inplace=True)
 ```
@@ -102,7 +102,9 @@ Then, there are many possibilities to deal with the missing values. We can simpl
 
 The Pandas packages allow us to fill the **NaN** values with a desired one, here, we impute them with the *most frequent* value for the chosen column.
 
-`train['LotFrontage'] = train['LotFrontage'].fillna(train['LotFrontage'].mode()[0])`
+```python
+train['LotFrontage'] = train['LotFrontage'].fillna(train['LotFrontage'].mode()[0])
+```
 
 3.3. Categorical data
 
@@ -113,7 +115,7 @@ For the categorical data, the process is to encode them to have numerical values
 It's more convenient to considere categorical variables with a limited number of unique variable.
 
 For that we use the module *One Hot Encoder* :
-```
+```python
 encoder = OneHotEncoder(handle_unknown='ignore', sparse=False)
 categorical_encoded_train_data = pd.DataFrame(encoder.fit_transform(xcat))
 categorical_encoded_train_data.index = categorical_train_data.index
@@ -124,7 +126,7 @@ With the help of Seaborn and Pandas we can use some strong tools to analyse data
 
 We can create a correlation matrix in Pandas, using different methods whether the correlations are linear or polynomial. For this example, we use the **Pearson** method, and apply it to the first ten numerical columns :
 
-```
+```python
 first_ten_cols = numerical_train_data[:10]
 corrmat = train[first_ten_cols].corr(method='pearson')
 f, ax = plt.subplots(figsize=(11, 7))
@@ -141,9 +143,13 @@ Strong correlation, i.e. close to **1.00** indicate a linear correlation between
 
 After preprocessing the data with the cleaning step, the vizualisation of variables, the handling of missing values and some features engineering, the last step is to create a model based on the training data.
 We first split the training set in a training and validation set. 
+
+```python
+y = train.SalePrice
+train.drop(['SalePrice'], axis=1, inplace=True)
+xtrain, xvalid, ytrain, yvalid = train_test_split(train, y, train_size=0.8, test_size=0.2, random_state=0)
 ``` 
-xtrain, xvalid, ytrain, yvalid = train_test_split(data, y, train_size=0.8, test_size=0.2, random_state=0)
-``` 
+
 With that we create a model to fit the training data and apply it on the validation set. Then we compute the *mean absolute error* (or mean squared error or another) to see if our model is precisely fitting the data or not.
 One can also optimize the modeling step, to search which machine learning algorithm is the most accurate for the context. 
 
@@ -171,4 +177,9 @@ And *voilà*.
 
 There are plenthy of ways to make better predictions, here are some of it to develop :
 
-
+* feature engineering :
+  - remove, add and modify the features to obtain more pertinent values
+* EDA :
+  - explore the data to analyse it and extract what's important and what's not.
+* model :
+  - try different machine learning models, with different parameters, and optimize it according to the type of predictions you want to make.
