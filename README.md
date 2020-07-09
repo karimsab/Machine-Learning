@@ -152,14 +152,14 @@ For the example, we'll use the simple one that is the decision tree regressor. O
 ![Capture d’écran 2020-07-08 à 12 03 52](https://user-images.githubusercontent.com/62601686/86906243-8f3e8500-c113-11ea-805c-0b0e25269196.png)
 
 For optimizing it, we can act on many parameters such as the numuber of nodes or leaves, the depth of the tree, and more... here we'll keep it simple.
-```
+```python
 model = DecisionTreeRegressor(random_state=0)
 model.fit(xtrain, ytrain)
 predictions = model.predict(xvalid)
 print('MAE', mean_absolute_error(predictions, yvalid))
 ```
 If we agree with the value of the MAE, we can now use our model to predict house prices on the test set (wich have not a Sale Price column).
-```
+```python
 preds_test = model.predict(test)
 print(preds_test.head())
 ```
@@ -169,4 +169,6 @@ And *voilà*.
 
 6. Conclusion
 
-*work in progress*
+There are plenthy of ways to make better predictions, here are some of it to develop :
+
+
