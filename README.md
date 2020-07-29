@@ -137,7 +137,7 @@ and one can see the results below :
 
 ![Capture d’écran 2020-07-07 à 18 08 28](https://user-images.githubusercontent.com/62601686/86811537-4ee0f780-c07e-11ea-8645-7a6d971331aa.png)
 
-Strong correlation, i.e. close to **1.00** indicate a linear correlation between variables. Whether it is negative or positive. Two variables with strong correlation can produce redundancy and overfitting may occur.
+Strong correlation, i.e. close to **|1.00|** indicate a linear correlation between variables. Whether it is negative or positive. Two variables with strong correlation can produce redundancy and overfitting may occur.
 
 5. Modeling
 
