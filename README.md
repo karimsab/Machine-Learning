@@ -5,7 +5,7 @@ This is a synthetic and a basic example of what we are capable of in data scienc
 
 For this, we are using the [House Prices Competition](https://www.kaggle.com/c/home-data-for-ml-course) on Kaggle site,
 
-where the objective is to predict house prices from a train and test datasets. 
+where the objective is to predict house prices from a train and test datasets (*top 3%*). 
 
 **Content :**
 
